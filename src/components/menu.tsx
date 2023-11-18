@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Menu() {
   return (
-    <div className="absolute inset-x-0 bottom-0 flex flex-row mx-auto my-auto p-4 bg-green-200">
+    <div className="flex flex-row mx-auto my-auto p-4 bg-green-200">
       <div className="flex flex-col items-center mx-auto text-black">
         <span>
           <svg
@@ -28,14 +28,14 @@ export default function Menu() {
           >
             <path
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="m7 10 2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
             />
           </svg>
         </span>
-        <Link href="/">Objetivos</Link>
+        <Link href="/goals">Objetivos</Link>
       </div>
       <div className="flex flex-col items-center mx-auto text-black">
         <span>
@@ -48,9 +48,9 @@ export default function Menu() {
           >
             <g
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
             >
               <path d="M19 11V9a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L12 2.757V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L2.929 4.343a1 1 0 0 0 0 1.414l.536.536L2.757 8H2a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535L8 17.243V18a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H18a1 1 0 0 0 1-1Z" />
               <path d="M10 13a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />

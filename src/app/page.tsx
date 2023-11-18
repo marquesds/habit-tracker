@@ -1,24 +1,70 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import WeekCalendar from "@/components/date";
 import HabitCard from "@/components/habit-card";
 import HabitProgressBar from "@/components/habit-progress-bar";
 import Menu from "@/components/menu";
 import Welcome from "@/components/welcome";
-import Image from "next/image";
+import Head from "next/head";
+
+interface Habit {
+  id: string;
+  name: string;
+  unit: string;
+  quantity: number;
+  achieved: number;
+}
 
 export default function Home() {
+  const [habits, setHabits] = useState([]);
+
+  useEffect(() => {
+    const fetchHabits = async () => {
+      try {
+        const response = await axios.get("/api/habits");
+        setHabits(response.data);
+      } catch (error) {
+        console.error("Error fetching habits:", error);
+        // Handle the error accordingly in your real app.
+      }
+    };
+
+    fetchHabits();
+  }, []);
+
   return (
     <div className="flex flex-col">
+      <Head>
+        <title>Habit Tracker | Home</title>
+      </Head>
       <div>
         <Welcome name="João" />
       </div>
       <div>
-        <HabitProgressBar total={3} completed={1} />
+        <HabitProgressBar
+          total={habits.length}
+          completed={
+            habits.filter((habit) => {
+              habit.quantity === habit.achieved;
+            }).length
+          }
+        />
+      </div>
+      <div>
+        <WeekCalendar />
       </div>
       <div className="flex flex-row flex-wrap items-center">
-        <HabitCard name="Beber água" unit="copos" quantity={5} actual={0} />
-        <HabitCard name="Horas de sono" unit="horas" quantity={8} actual={0} />
-        <HabitCard name="Leitura" unit="minutos" quantity={25} actual={0} />
+        {habits.map((habit: Habit) => (
+          <HabitCard
+            id={habit.id}
+            name={habit.name}
+            unit={habit.unit}
+            quantity={habit.quantity}
+            achieved={habit.achieved}
+          />
+        ))}
       </div>
       <div>
         <Menu />
