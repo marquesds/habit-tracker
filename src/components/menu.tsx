@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Menu() {
   return (
-    <div className="flex flex-row mx-auto my-auto p-4 bg-green-200">
+    <div className="absolute inset-x-0 bottom-0 flex flex-row mx-auto my-auto p-4 bg-green-200">
       <div className="flex flex-col items-center mx-auto text-black">
         <span>
           <svg
