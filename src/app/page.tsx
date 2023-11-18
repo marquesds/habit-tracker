@@ -8,6 +8,7 @@ import HabitProgressBar from "@/components/habit-progress-bar";
 import Menu from "@/components/menu";
 import Welcome from "@/components/welcome";
 import Head from "next/head";
+import { set } from "date-fns";
 
 interface Habit {
   id: string;
@@ -19,15 +20,20 @@ interface Habit {
 
 export default function Home() {
   const [habits, setHabits] = useState([]);
+  const [complete, setComplete] = useState(0);
 
   useEffect(() => {
     const fetchHabits = async () => {
       try {
         const response = await axios.get("/api/habits");
         setHabits(response.data);
+        setComplete(
+          response.data.filter(
+            (habit: Habit) => habit.quantity === habit.achieved,
+          ).length,
+        );
       } catch (error) {
         console.error("Error fetching habits:", error);
-        // Handle the error accordingly in your real app.
       }
     };
 
@@ -43,14 +49,7 @@ export default function Home() {
         <Welcome name="João" />
       </div>
       <div>
-        <HabitProgressBar
-          total={habits.length}
-          completed={
-            habits.filter((habit) => {
-              habit.quantity === habit.achieved;
-            }).length
-          }
-        />
+        <HabitProgressBar total={habits.length} completed={complete} />
       </div>
       <div>
         <WeekCalendar />
