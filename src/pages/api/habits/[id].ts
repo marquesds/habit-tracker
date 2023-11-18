@@ -2,7 +2,7 @@ import { sql } from "@vercel/postgres";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const habitId = req.query.id;
+  const habitId: string = req.query.id as string;
 
   if (req.method === "GET") {
     const result = await sql`SELECT * FROM habits WHERE id = ${habitId};`;

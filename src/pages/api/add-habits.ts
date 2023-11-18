@@ -6,12 +6,15 @@ export const config = {
 };
 
 export default async function GET(request: Request) {
-  const url = new URL(request.url, `http://${request.headers.host}`);
+  const url = new URL(
+    request.url,
+    `http://${request.headers.get("host") as string}`,
+  );
   const searchParams = url.searchParams;
   const name = searchParams.get("name");
-  const quantity = parseInt(searchParams.get("quantity"));
+  const quantity = parseInt(searchParams.get("quantity") || "0");
   const unit = searchParams.get("unit");
-  const achieved = parseInt(searchParams.get("achieved"));
+  const achieved = parseInt(searchParams.get("achieved") || "0");
 
   try {
     await sql`INSERT INTO habits (name, quantity, unit, achieved) VALUES (${name}, ${quantity}, ${unit}, ${achieved});`;
