@@ -49,7 +49,7 @@ export default function HabitCard(props: HabitCardProps) {
   return (
     <div className="flex flex-col items-center mx-auto my-5 p-6 max-w-sm rounded-xl shadow-lg bg-orange-100 space-y-3">
       <div>{props.name}</div>
-      <div className="flex items-center justify-center -m-6 overflow-hidden rounded-full">
+      <div className="flex items-center justify-center overflow-hidden rounded-full">
         <svg
           className="w-32 h-32 transform translate-x-1 translate-y-1"
           x-cloak
