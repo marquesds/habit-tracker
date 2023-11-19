@@ -15,11 +15,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     };
 
     try {
+      if (!newHabit.name || !newHabit.unit || !newHabit.quantity) {
+        throw new Error("Missing field(s)");
+      }
       const result = await sql`
       INSERT INTO habits
         (name, unit, quantity, achieved)
       VALUES
-        (${newHabit.name}, ${newHabit.unit}, ${newHabit.quantity}, ${newHabit.achieved});
+        (${newHabit.name}, ${newHabit.unit}, ${newHabit.quantity}, 0);
     `;
     } catch (error) {
       res.status(500).json({ error });

@@ -8,7 +8,6 @@ import HabitProgressBar from "@/components/habit-progress-bar";
 import Menu from "@/components/menu";
 import Welcome from "@/components/welcome";
 import Head from "next/head";
-import { set } from "date-fns";
 
 interface Habit {
   id: string;
