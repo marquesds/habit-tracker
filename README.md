@@ -4,6 +4,8 @@ Seu aplicativo favorito de gestão de hábitos.
 
 [![Assista o vídeo de demonstração!](public/habit-tracker-image.png)](public/habit-tracker.mov)
 
+[Acesse o site!](https://habit-tracker-pied-zeta.vercel.app/)
+
 ## Colaboradores
 
 - Guilherme Ricardo Tavares Paula
